@@ -5,8 +5,8 @@
     <title>photoboard</title>
   </head>
   <body>
-      <script language="javascript" type="text/javascript">
-		theUrl = "https://www.talkwalker.com/app/page#/dashboard#g=DASHBOARD&i=55ea5ecf-fec7-4346-8561-9d4908cc3b7c&tz=Europe%2FParis&cpid=DASHBOARD%21iy4ge11p_5imm9qtqnrh9&co=project&cid=706a40d3-ded0-485c-a0ca-1540adee9c0e";
+    <script language="javascript" type="text/javascript">
+		theUrl = "https://www.talkwalker.com/app/project/706a40d3-ded0-485c-a0ca-1540adee9c0e/cached/export_LVMHDIOR_CEdoExbR.csv";
         var xmlHttp = new XMLHttpRequest();
 		xmlHttp.open("GET", theUrl, false ); // false for synchronous request
     	xmlHttp.send(null);
@@ -47,25 +47,28 @@
 			// A row of pictures
 			document.write("<tr>");
 			var line, i;
-			for(line=x, i=0; i<n; i++, line++) {
+			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
-				document.write("<td ><a href=\"" + array[line][0] + "\"> <img src=\""+array[line][25]+"\" alt=\"\" height=120 width=120></a></td>"); 
+				document.write("<td ><a href=\"" + array[line][0] + "\"> <img src=\""+array[line][25]+"\" alt=\"\" height=120 width=120></a></td>");
+        i++
 			}
 			document.write("</tr><tr>");
 			
 			// Then a row of legends
-			for(line=x, i=0; i<n; i++, line++) {
+			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
 				var legend = array[line][62] ; // Author name 
 				document.write("<td align=\"center\">"+legend+"</td>");
+        i++;
 			}
 			document.write("</tr><tr>");
 		
-			for(line=x, i=0; i<n; i++, line++) {
+			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
 				var legend = array[line][18].toLowerCase() + array[line][34].substring(11) + // content type + key word
 				    " " + Math.floor(array[line][83]/1000) + "K"; // engagement
 				document.write("<td align=\"center\">"+legend+"</td>");
+        i++;
 			}
 			document.write("</tr>");
 			return (i);
