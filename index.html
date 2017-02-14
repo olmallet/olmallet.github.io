@@ -43,7 +43,7 @@
 		
         array =  parseCSV(xmlHttp.responseText); // CSVtoArray(lines[line]); -->
 		
-		function int printLine(x,n) {
+		function printLine(x,n) {
 			// A row of pictures
 			document.write("<tr>");
 			var line, i;
@@ -72,7 +72,7 @@
 		}
 
 		document.write("<table><tbody>");
-		cnt = printLine(1,8); // do not use line 0
+		var cnt = printLine(1,8); // do not use line 0
 		printLine(cnt,8);
 		document.write("</tbody></table>");
 		
