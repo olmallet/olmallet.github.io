@@ -44,14 +44,17 @@
         array =  parseCSV(xmlHttp.responseText); // CSVtoArray(lines[line]); -->
 		
 		function printLine(x,y) {
+			// A row of pictures
 			document.write("<tr>");
-			for(var line = x; line <= y; line++) {
-				var legend = array[line][37] + " " + array[line][25]/1000 + "K"; // Name and engagements
-				document.write("<td ><a href=\"" + array[line][0] + "\"> <img src=\""+legend+"\" alt=\"\" height=120 width=120></a></td>"); 
-			}
+			for(var line = x; line <= y; line++)
+				document.write("<td ><a href=\"" + array[line][0] + "\"> <img src=\""+array[line][25]+"\" alt=\"\" height=120 width=120></a></td>"); 
 			document.write("</tr><tr>");
-			for(line = x; line <= y; line++) 
-				document.write("<td align=\"center\">"+array[line][83]+"</td>");
+			
+			// Then a row of legends
+			for(line = x; line <= y; line++) {
+				var legend = array[line][37] + " " + array[line][83]/1000 + "K"; // Author name and engagements
+				document.write("<td align=\"center\">"+legend+"</td>");
+			}
 			document.write("</tr>");
 		}
 
