@@ -58,7 +58,7 @@
 			document.write("</tr><tr>");
 		
 			for(line = x; line <= y; line++) {
-				var legend = array[line][18] + array[line][34].str.substring(11) + // content type + key word
+				var legend = array[line][18] + array[line][34].substring(11) + // content type + key word
 				    Math.floor(array[line][83]/1000) + "K"; // engagement
 				document.write("<td align=\"center\">"+legend+"</td>");
 			}
