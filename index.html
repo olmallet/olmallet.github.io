@@ -46,7 +46,8 @@
 		function int printLine(x,n) {
 			// A row of pictures
 			document.write("<tr>");
-			for(var line=x, i=0; i<n; i++, line++) {
+			var line, i;
+			for(line=x, i=0; i<n; i++, line++) {
 				if (array[line][25]=="") continue; // picture not available
 				document.write("<td ><a href=\"" + array[line][0] + "\"> <img src=\""+array[line][25]+"\" alt=\"\" height=120 width=120></a></td>"); 
 			}
