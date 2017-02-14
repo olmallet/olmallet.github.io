@@ -52,7 +52,13 @@
 			
 			// Then a row of legends
 			for(line = x; line <= y; line++) {
-				var legend = array[line][62] + "\n" + Math.floor(array[line][83]/1000) + "K"; // Author name and engagements
+				var legend = array[line][62] ; // Author name and engagements
+				document.write("<td align=\"center\">"+legend+"</td>");
+			}
+			document.write("</tr><tr>");
+		
+			for(line = x; line <= y; line++) {
+				var legend = Math.floor(array[line][83]/1000) + "K"; // Author name and engagements
 				document.write("<td align=\"center\">"+legend+"</td>");
 			}
 			document.write("</tr>");
