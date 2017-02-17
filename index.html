@@ -74,8 +74,8 @@
 		
 			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
-				source = array[line][9]; //.substring(7); // skip http://
-				//source = source.substring(0, source.search("\.")); // up to the first dot
+				source = array[line][9].substring(7); // skip http://
+				source = source.substring(0, source.indexOf('.')); // up to the first dot
 						
 				legend = array[line][18].toLowerCase() + source + " on keyword " + array[line][34].substring(11) + // content type + key word
 				    " " + Math.floor(array[line][83]/1000) + "K"; // engagement
