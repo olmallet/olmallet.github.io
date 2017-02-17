@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>PosNeg</title>
+    <style type="text/css" media="screen">
+      body {
+			  font-family: Arial, Helvetica, sans-serif; 
+				font-size: 11px;
+      }
+  </style>
+  </head>
+  <body>
+    <script language="javascript" type="text/javascript">
+		theUrl = "https://www.talkwalker.com/app/project/706a40d3-ded0-485c-a0ca-1540adee9c0e/cached/export_LVMHDIOR_BDINfSgR.csv";
+        var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", theUrl, false ); // false for synchronous request
+    	xmlHttp.send(null);
+        function parseCSV(str) {
+            var arr = [];
+            var quote = false;  // true means we're inside a quoted field
+
+            // iterate over each character, keep track of current row and column (of the returned array)
+            for (var row = col = c = 0; c < str.length; c++) {
+                var cc = str[c], nc = str[c+1];        // current character, next character
+                arr[row] = arr[row] || [];             // create a new row if necessary
+                arr[row][col] = arr[row][col] || '';   // create a new column (start with empty string) if necessary
+
+                // If the current character is a quotation mark, and we're inside a
+                // quoted field, and the next character is also a quotation mark,
+                // add a quotation mark to the current column and skip the next character
+                if (cc == '"' && quote && nc == '"') { arr[row][col] += cc; ++c; continue; }  
+
+                // If it's just one quotation mark, begin/end quoted field
+                if (cc == '"') { quote = !quote; continue; }
+
+                // If it's a comma and we're not in a quoted field, move on to the next column
+                if (cc == ',' && !quote) { ++col; continue; }
+                if (cc == ',' &&  quote) { continue; } // skip , in numbers
+              
+                // If it's a newline and we're not in a quoted field, move on to the next
+                // row and move to column 0 of that new row
+                if (cc == '\n' && !quote) { ++row; col = 0; continue; }
+
+                // Otherwise, append the current character to the current column
+                arr[row][col] += cc;
+            }
+            return arr;
+        }
+		
+        array =  parseCSV(xmlHttp.responseText); // CSVtoArray(lines[line]); -->
+
+                
+      	var b; // la marque
+      	var maxrpos = -1;
+      	var maxrneg = -1;
+      	var posb = 0;
+      	var negb = 0;
+      
+		
+     		for (b=1;b<array[0].length;b++) {
+          pos=parseInt(array[1][b]);
+      		neu=parseInt(array[2][b]);
+      		neg=parseInt(array[3][b]);
+          rpos= (pos+0.0)/(pos+neu+neg);
+          rneg= (neg+0.0)/(pos+neu+neg);
+          toto=pos+1;
+          
+          if (rpos>maxrpos) { posb=b; maxrpos=rpos; namepos=array[0][b]; }
+          if (rneg>maxrneg) { negb=b; maxrneg=rneg; nameneg=array[0][b];}
+        }
+      
+      
+      
+				document.write("<p>"+namepos+" "+Math.round(100*maxrpos));
+				document.write("<p>"+nameneg+" "+Math.round(100*maxrneg));
+		
+      </script>
+  </body>
+</html>
