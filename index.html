@@ -53,33 +53,34 @@
 		function printLine(x,n) {
 			// A row of pictures
 			document.write("<tr>");
-			var line, i;
+			var line, i, source, legend;
+			
 			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
 				document.write("<td ><a href=\"" + array[line][0] + "\" target=\"_blank\"> <img src=\""+array[line][25]+"\" alt=\"\" height=120 width=120></a></td>");
-        i++
+        			i++
 			}
 			document.write("</tr><tr>");
 			
 			// Then a row of legends
 			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
-				var legend = array[line][62] ; // Author name 
+				legend = array[line][62] ; // Author name 
 				document.write("<td align=\"center\">"+legend+"</td>");
-        i++;
+       				i++;
 			}
 			document.write("</tr><tr>");
 		
-			var source, legend;
+		
 			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
-				source = array[line][9]).substring(7); // skip http://
+				source = array[line][9].substring(7); // skip http://
 				source = source.substring(0, source.search("\.")); // up to the first dot
 						
 				legend = array[line][18].toLowerCase() + source + "on keyword" + array[line][34].substring(11) + // content type + key word
 				    " " + Math.floor(array[line][83]/1000) + "K"; // engagement
 				document.write("<td align=\"center\">"+legend+"</td>");
-        i++;
+        			i++;
 			}
 			document.write("</tr>");
 			return (i);
