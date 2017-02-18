@@ -5,8 +5,8 @@
     <title>photoboard</title>
     <style type="text/css" media="screen">
       body {
-			  font-family: Arial, Helvetica, sans-serif; 
-				font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 11px;
       }
   </style>
   </head>
@@ -83,7 +83,7 @@
 			
 			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
-				legend = "on keyword " + array[line][34].substring(11); // key word
+				legend = "keyword " + array[line][34].substring(11); // key word
 				document.write("<td align=\"center\">"+legend+"</td>");
         			i++;
 			}
