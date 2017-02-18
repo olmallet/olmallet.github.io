@@ -6,8 +6,15 @@
     <style type="text/css" media="screen">
       body {
 			  font-family: Arial, Helvetica, sans-serif; 
-				font-size: 11px;
+				font-size: 18px;
       }
+	table{      
+    border-collapse: separate;
+    border-spacing: 5px;
+    border:2px solid #fff;border-collapse:separate;
+    width:300px;
+    text-align: center;
+  }
   </style>
   </head>
   <body>
@@ -71,10 +78,15 @@
         }
       
       
-      
-				document.write("<p>"+namepos+" "+Math.round(100*maxrpos));
-				document.write("<p>"+nameneg+" "+Math.round(100*maxrneg));
+      document.write("<table><tr>");
+				document.write("<td>Top positive</td>");
+				document.write("<td>Top negative</td></tr>");
+	    
+				document.write("<tr><td>"+namepos+" "+Math.round(100*maxrpos)+"%</td>");
+				document.write("<td>"+nameneg+" "+Math.round(100*maxrneg)+"%</td></tr>");
+      document.write("</table>");
 		
       </script>
   </body>
 </html>
+
