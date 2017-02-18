@@ -83,7 +83,7 @@
 			
 			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") continue; // picture not available
-				legend = "keyword " + array[line][34].substring(11); // key word
+				legend = "keyword <b>" + array[line][34].substring(11) + "</b>"; // key word
 				document.write("<td align=\"center\">"+legend+"</td>");
         			i++;
 			}
