@@ -13,7 +13,7 @@
     border-spacing: 5px;
     border:2px solid #fff;border-collapse:separate;
     width:500px;
-    text-align: center;
+    text-align: left;
   }
   </style>
   </head>
@@ -78,10 +78,10 @@
         }
       
       
-      //document.write("<table align="left"><tr>");
-	document.write("<font color=#6690BA><b>+++   </b>"+namepos+" : "+Math.round(100*maxrpos)+"% positive</font><br>");
-	document.write("<b><font color=#AA3030>---   </b>"+nameneg+" : "+Math.round(100*maxrneg)+"% negative</font>");
-      //document.write("</table>");
+      document.write("<table><tr>");
+	document.write("<td><font color=#6690BA><b>+++   </b></td><td>"+namepos+"</td><td>"+Math.round(100*maxrpos)+"% positive</font></td></tr><tr>");
+	document.write("<td><b><font color=#AA3030>---   </b></td><td>"+nameneg+"</td><td>"+Math.round(100*maxrneg)+"% negative</font></td></tr>");
+      document.write("</table>");
 		
       </script>
   </body>
