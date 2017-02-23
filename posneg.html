@@ -80,8 +80,10 @@
       
       
       document.write("<table><tr>");
-	document.write("<td><font color=#6690BA><b>+++   </b></td><td>"+namepos+"</td><td>"+Math.round(100*maxrpos)+"% positive publications</font></td></tr><tr>");
-	document.write("<td><b><font color=#AA3030>- - -   </b></td><td>"+nameneg+"</td><td>"+Math.round(100*maxrneg)+"% negative publications</font></td></tr>");
+	document.write("<td><font color=#6690BA><b>+++   </b></td><td>"+namepos+"</td><td>"+Math.round(100*maxrpos)+"% estimated positive
+publications out of all publications on "+namepos+"</font></td></tr><tr>");
+	document.write("<td><b><font color=#AA3030>- - -   </b></td><td>"+nameneg+"</td><td>"+Math.round(100*maxrneg)+"% estimated positive
+publications out of all publications on "+nameneg+"</font></td></tr>");
       document.write("</table>");
 		
       </script>
