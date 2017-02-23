@@ -1,2 +1,2 @@
 # olmallet.github.io
-static page
+static pages for dashboard
