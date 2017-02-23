@@ -11,7 +11,7 @@
       }
       table{      
 	    border-collapse: separate;
-	    border-spacing: 5px;
+	    border-spacing: 15px;
 	    border:2px solid #fff;
 	    border-collapse:separate;
 	    
@@ -67,13 +67,12 @@
       	var negb = 0;
       
 		
-     		for (b=1;b<array[0].length;b++) {
+     	for (b=1;b<array[0].length;b++) {
           pos=parseInt(array[1][b]);
-      		neu=parseInt(array[2][b]);
-      		neg=parseInt(array[3][b]);
+      	  neu=parseInt(array[2][b]);
+      	  neg=parseInt(array[3][b]);
           rpos= (pos+0.0)/(pos+neu+neg);
           rneg= (neg+0.0)/(pos+neu+neg);
-          toto=pos+1;
           
           if (rpos>maxrpos) { posb=b; maxrpos=rpos; namepos=array[0][b]; }
           if (rneg>maxrneg) { negb=b; maxrneg=rneg; nameneg=array[0][b];}
