@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>photoboard</title>
+    <style type="text/css" media="screen">
+      body {
+	      margin-top: 1px;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 11px;
+      }
+	    Table { th, td {
+    padding: 15px;
+    text-align: left;
+}}
+  </style>
+  </head>
+
+  <body>
+    <script language="javascript" type="text/javascript">
+		theUrl = "https://www.talkwalker.com/app/project/f4be9b4c-85da-4b04-a7a3-0478e3649a4f/cached/export_DIORParfumsCouture_ogCE9742.csv";
+        var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", theUrl, false ); // false for synchronous request
+    	xmlHttp.send(null);
+        function parseCSV(str) {
+            var arr = [];
+            var quote = false;  // true means we're inside a quoted field
+            // iterate over each character, keep track of current row and column (of the returned array)
+            for (var row = col = c = 0; c < str.length; c++) {
+                var cc = str[c], nc = str[c+1];        // current character, next character
+                arr[row] = arr[row] || [];             // create a new row if necessary
+                arr[row][col] = arr[row][col] || '';   // create a new column (start with empty string) if necessary
+                // If the current character is a quotation mark, and we're inside a
+                // quoted field, and the next character is also a quotation mark,
+                // add a quotation mark to the current column and skip the next character
+                if (cc == '"' && quote && nc == '"') { arr[row][col] += cc; ++c; continue; }  
+                // If it's just one quotation mark, begin/end quoted field
+                if (cc == '"') { quote = !quote; continue; }
+                // If it's a comma and we're not in a quoted field, move on to the next column
+                if (cc == ',' && !quote) { ++col; continue; }
+                // If it's a newline and we're not in a quoted field, move on to the next
+                // row and move to column 0 of that new row
+                if (cc == '\n' && !quote) { ++row; col = 0; continue; }
+                // Otherwise, append the current character to the current column
+                arr[row][col] += cc;
+            }
+            return arr;
+        }
+		
+        array =  parseCSV(xmlHttp.responseText); // CSVtoArray(lines[line]); -->
+		
+		function printLine(x,n) {
+			// A row of pictures
+			document.write("<tr>");
+			var line, i, source, legend;
+			
+			for(line=x, i=0; i<n; line++) {
+				if (array[line][25]=="") continue; // picture not available
+				document.write("<td ><a href=\"" + array[line][0] + "\" target=\"_blank\"> <img src=\""+array[line][25]+"\" alt=\"\" height=120 width=120></a></td>");
+        			i++
+			}
+			document.write("</tr><tr>");
+			
+			// Then a row of legends
+			for(line=x, i=0; i<n; line++) {
+				if (array[line][25]=="") continue; // picture not available
+				legend = array[line][62] ; // Author name 
+				document.write("<td align=\"center\">"+legend+"</td>");
+       				i++;
+			}
+			document.write("</tr><tr>");
+		
+			for(line=x, i=0; i<n; line++) {
+				if (array[line][25]=="") continue; // picture not available
+				source = array[line][9].substring(7); // skip http://
+				source = source.substring(0, source.indexOf('.')); // up to the first dot
+				legend = source + " " + Math.floor(array[line][83]/1000) + "K"; // source & engagement
+				document.write("<td align=\"center\">"+legend+"</td>");
+        			i++;
+			}
+			document.write("</tr><tr>");
+			
+			for(line=x, i=0; i<n; line++) {
+				if (array[line][25]=="") continue; // picture not available
+				legend = "keyword <b>" + array[line][34].substring(11,25) + "</b>"; // key word
+				document.write("<td align=\"center\">"+legend+"</td>");
+        			i++;
+			}
+			document.write("</tr>");
+			return (line);
+		}
+		document.write("<table><tbody>");
+		var cnt = printLine(1,15); // do not use line 0
+		//printLine(cnt,6);
+		document.write("</tbody></table>");
+		
+      </script>
+  </body>
+</html>
