@@ -61,7 +61,9 @@
 			var line, i, source, legend;
 			
 			for(line=x, i=0; i<n; line++) {
-				if (array[line][25]=="") continue; // picture not available
+				if (array[line][25]=="") // picture not available
+					array[line][25]= "https://upload.wikimedia.org/wikipedia/fr/c/c8/Twitter_Bird.svg"
+				
 				document.write("<td ><a href=\"" + array[line][0] + "\" target=\"_blank\"> <img src=\""+array[line][25]+"\" alt=\"\" height=120 width=120></a></td>");
         			i++
 			}
@@ -69,7 +71,7 @@
 			
 			// Then a row of legends
 			for(line=x, i=0; i<n; line++) {
-				if (array[line][25]=="") continue; // picture not available
+				//if (array[line][25]=="") continue; // picture not available
 				legend = array[line][62] ; // Author name 
 				document.write("<td align=\"center\">"+legend+"</td>");
        				i++;
@@ -77,7 +79,7 @@
 			document.write("</tr><tr>");
 		
 			for(line=x, i=0; i<n; line++) {
-				if (array[line][25]=="") continue; // picture not available
+				//if (array[line][25]=="") continue; // picture not available
 				source = array[line][9].substring(7); // skip http://
 				source = source.substring(0, source.indexOf('.')); // up to the first dot
 				legend = source + " " + Math.floor(array[line][83]/1000) + "K"; // source & engagement
@@ -87,7 +89,7 @@
 			document.write("</tr><tr>");
 			
 			for(line=x, i=0; i<n; line++) {
-				if (array[line][25]=="") continue; // picture not available
+				//if (array[line][25]=="") continue; // picture not available
 				legend = "keyword <b>" + array[line][34].substring(11,25) + "</b>"; // key word
 				document.write("<td align=\"center\">"+legend+"</td>");
         			i++;
