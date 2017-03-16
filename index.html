@@ -71,7 +71,7 @@
 			
 			// Then a row of legends
 			for(line=x, i=0; i<n; line++) {
-				if (array[line][25]=="") continue; // picture not available
+				// if (array[line][25]=="") continue; // picture not available
 				legend = array[line][62] ; // Author name 
 				document.write("<td align=\"center\">"+legend+"</td>");
        				i++;
@@ -79,7 +79,7 @@
 			document.write("</tr><tr>");
 		
 			for(line=x, i=0; i<n; line++) {
-				if (array[line][25]=="") continue; // picture not available
+				// if (array[line][25]=="") continue; // picture not available
 				source = array[line][9].substring(7); // skip http://
 				source = source.substring(0, source.indexOf('.')); // up to the first dot
 				legend = source + " " + Math.floor(array[line][83]/1000) + "K"; // source & engagement
