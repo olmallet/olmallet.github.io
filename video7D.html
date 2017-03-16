@@ -74,7 +74,7 @@
 				if (array[line][25]=="") continue; // picture not available
 				source = array[line][9].substring(7); // skip http://
 				source = source.substring(0, source.indexOf('.')); // up to the first dot
-				legend = source + " " + Math.floor(array[line][83]/1000) + "K"; // source & engagement
+				legend = source + " " + Math.floor(array[line][42]/1000) + "K"; // source & nb vues
 				document.write("<td align=\"center\">"+legend+"</td>");
         			i++;
 			}
@@ -90,8 +90,8 @@
 			return (line);
 		}
 		document.write("<table><tbody>");
-		var cnt = printLine(1,8); // do not use line 0
-		//printLine(cnt,6);
+		var cnt = printLine(1,5); // do not use line 0
+		printLine(cnt,5);
 		document.write("</tbody></table>");
 		
       </script>
