@@ -120,7 +120,7 @@
 		function printLine(x,n) {
 			// A row of pictures
 			document.write("<tr>");
-			var line, i, source, legend;
+			var line, i, source, legend, authorid, c;
 			
 			for(line=x, i=0; i<n; line++) {
 				if (array[line][25]=="") // picture not available
@@ -133,8 +133,15 @@
 			// Then a row of legends
 			for(line=x, i=0; i<n; line++) {
 				// if (array[line][25]=="") continue; // picture not available
+						
+				authorid = array[line][60]; // author id
+				if (officiel.indexOf(authorid)>=0) 
+					c = "\u2714 " 
+				else 
+					c="";
+				
 				legend = array[line][62] ; // Author name 
-				document.write("<td align=\"center\">"+legend+"</td>");
+				document.write("<td align=\"center\">"+c+legend+"</td>");
        				i++;
 			}
 			document.write("</tr><tr>");
