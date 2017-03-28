@@ -136,12 +136,13 @@
 						
 				authorid = array[line][60]; // author id
 				if (officiel.indexOf(authorid)>=0) 
-					c = "<img src=\" https://ton.twitter.com/hc_assets/1307051244_737.png\">"; 
+					c = " <img src=https://olmallet.github.io/twitter.png width=13>"; 
+
 				else 
 					c="";
 				
 				legend = array[line][62] ; // Author name 
-				document.write("<td align=\"center\">"+legend+c"</td>");
+				document.write("<td align=\"center\">"+legend+c+"</td>");
        				i++;
 			}
 			document.write("</tr><tr>");
